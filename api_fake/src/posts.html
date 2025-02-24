@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="/api_fake/src/static/css/layout.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="/api_fake/src/static/css/style.css"
+      type="text/css"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="header-container"></div>
+
+    <section>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Title</th>
+              <th>Views</th>
+              <th>Author</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="body">
+            <!-- Rows will be inserted here by JavaScript -->
+          </tbody>
+        </table>
+        <div>
+          <p>id</p>
+          <input type="text" id="id" />
+        </div>
+        <div>
+          <p>title</p>
+          <input type="text" id="title" />
+        </div>
+        <div>
+          <p>views</p>
+          <input type="number" id="views" />
+        </div>
+        <div>
+          <p>Author</p>
+          <select id="author">
+            
+          </select>
+        </div>
+        <div>
+          <button onclick="Save();return false;">Save</button>
+        </div>
+        
+      </div>
+    </section>
+    <div id="footer-container"></div>
+    <script src="/api_fake/layout.js"></script>
+    <script src="/api_fake/main.js"></script>
+  </body>
+</html>

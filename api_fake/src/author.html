@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="/api_fake/src/static/css/layout.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="/api_fake/src/static/css/style.css"
+      type="text/css"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="header-container"></div>
+
+    <section>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Post Count</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="body">
+            
+          </tbody>
+        </table>
+        <div>
+          <p>id</p>
+          <input type="text" id="id" />
+        </div>
+        <div>
+          <p>name</p>
+          <input type="text" id="name" />
+        </div>
+       
+        
+        <div>
+          <button onclick="Save();return false;">Save</button>
+        </div>
+        
+      </div>
+    </section>
+    <div id="footer-container"></div>
+    <script src="/api_fake/author.js"></script>
+    <script src="/api_fake/layout.js"></script>
+  </body>
+</html>

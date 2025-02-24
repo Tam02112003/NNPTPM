@@ -1,0 +1,107 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "First Post",
+      "views": 150,
+      "author": "Alice",
+      "isPublished": true
+    },
+    {
+      "id": "2",
+      "title": "Second Post",
+      "views": 250,
+      "author": "Bob",
+      "isPublished": false
+    },
+    {
+      "id": "3",
+      "title": "Third Post",
+      "views": 400,
+      "author": "Charlie",
+      "isPublished": true,
+      "isDeleted": true
+    },
+    {
+      "id": "21",
+      "title": "Sample Post",
+      "views": "123",
+      "author": "David",
+      "isPublished": false
+    },
+    {
+      "id": "3",
+      "title": "Duplicate Post",
+      "views": "123",
+      "author": "Eve",
+      "isPublished": true
+    },
+    {
+      "id": "6",
+      "title": "ms",
+      "views": "Charlie",
+      "isDeleted": true
+    },
+    {
+      "id": "5",
+      "title": "saff",
+      "views": "333",
+      "author": "Bob"
+    },
+    {
+      "id": "6",
+      "title": "sâsaff",
+      "views": "2222",
+      "author": "Laptop",
+      "isDeleted": true
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": "1"
+    }
+  ],
+  "authors": [
+    {
+      "id": "1",
+      "name": "Alice",
+      "postCount": 1
+    },
+    {
+      "id": "2",
+      "name": "Bob",
+      "postCount": 2
+    },
+    {
+      "id": "3",
+      "name": "Charlie",
+      "postCount": 1
+    },
+    {
+      "id": "4",
+      "name": "David",
+      "postCount": 1
+    },
+    {
+      "id": "5",
+      "name": "Eve",
+      "postCount": 1
+    },
+    {
+      "id": "6",
+      "name": "Laptop",
+      "postCount": 1,
+      "isDeleted": true
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

@@ -32,12 +32,15 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/products', require('./routes/product'));
 app.use('/categories', require('./routes/category'));
+app.use('/roles', require('./routes/role'));
+app.use('/userroles', require('./routes/userrole'));
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
 
 // error handler
+
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;

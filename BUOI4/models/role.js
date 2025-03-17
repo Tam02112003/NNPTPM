@@ -6,6 +6,10 @@ let roleSchema = mongoose.Schema({
         required: true,
         unique: true
     },
+    description: {
+        type: String,
+        default: ''
+    },
     isDeleted: {
         type: Boolean,
         default: false
@@ -13,6 +17,5 @@ let roleSchema = mongoose.Schema({
 },{
     timestamps:true
 })
-
 module.exports=
 mongoose.model('role',roleSchema)

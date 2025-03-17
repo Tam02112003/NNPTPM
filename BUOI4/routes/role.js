@@ -1,7 +1,7 @@
 const { fail } = require("assert");
 var express = require("express");
 var router = express.Router();
-let roleSchema = require("../models/role");
+let roleSchema = require("../models/role.js");
 let BuildQueies = require("../Utils/BuildQuery");
 
 //http://localhost:3000/products?name=iph&price[$gte]=1600&price[$lte]=3000
@@ -32,6 +32,8 @@ router.post("/", async function (req, res, next) {
   console.log(body);
   let newRole = new roleSchema({
     roleName: body.roleName,
+    description: body.description,
+    isDeleted: body.isDeleted,
   });
   await newRole.save();
   res.send(newRole);

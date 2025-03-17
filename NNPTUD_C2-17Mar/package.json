@@ -1,5 +1,5 @@
 {
-  "name": "buoi4",
+  "name": "c2",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
-    "buoi4": "file:",
+    "c2": "file:",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "^4.21.2",

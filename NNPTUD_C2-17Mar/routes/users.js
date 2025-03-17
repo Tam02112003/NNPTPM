@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
-let userSchema = require('../models/user');
+let userSchema = require('../models/users');
 let userController = require('../controllers/users')
 let BuildQueries = require('../Utils/BuildQuery');
-let {check_authentication} = require('../Utils/check_auth')
+let {check_authentication, check_authorization} = require('../Utils/check_auth')
+let constants = require('../Utils/constants')
 
 router.get('/', async function(req, res, next) {
   let queries = req.query;
@@ -11,22 +12,23 @@ router.get('/', async function(req, res, next) {
   res.send(users);
 });
 
-router.get('/:id', async function(req, res, next) {
+router.get('/:id',check_authentication, async function(req, res, next) {
   try {
-    let user = await userSchema.findById(req.params.id).populate('role');
-    res.status(200).send({
-      success: true,
-      data: user
-    });
+    if(req.user._id==req.params.id){
+      let user = await userSchema.findById(req.params.id).populate('role');
+      res.status(200).send({
+        success: true,
+        data: user
+      });
+    }else{
+      throw new Error("ban khong co quyen")
+    } 
   } catch (error) {
-    res.status(404).send({
-      success: false,
-      message: error.message
-    });
-  }
+    next(error)
+  } 
 });
 
-router.post('/',check_authentication,async function(req, res, next) {
+router.post('/',check_authentication, check_authorization(constants.MOD_PERMISSION),async function(req, res, next) {
   try {
     let body = req.body;
         let result = await userController.createUser(

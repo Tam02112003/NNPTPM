@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 let userController = require('../controllers/users');
-const { check_authentication, check_admin } = require('../Utils/check_auth');
+const { check_authentication } = require('../Utils/check_auth');
 
 router.post('/signup', async function(req, res, next) {
     try {
@@ -10,7 +10,7 @@ router.post('/signup', async function(req, res, next) {
           body.username,
           body.password,
           body.email,
-         'ADMIN'
+         'MOD'
         )
         res.status(200).send({
           success:true,
@@ -45,27 +45,4 @@ router.get('/me',check_authentication, async function(req, res, next){
         next();
     }
 })
-
-router.get('/resetPassword/:id', check_authentication, check_admin, async function(req, res, next) {
-  try {
-    let userId = req.params.id;
-    let user = await userController.getUserById(userId);
-    if (user) {
-      user.password = '123456'; // Reset mật khẩu về 123456
-      await user.save();
-      res.status(200).send({
-        success: true,
-        message: 'Password has been reset to 123456'
-      });
-    } else {
-      res.status(404).send({
-        success: false,
-        message: 'User not found'
-      });
-    }
-  } catch (error) {
-    next(error);
-  }
-});
-
 module.exports = router

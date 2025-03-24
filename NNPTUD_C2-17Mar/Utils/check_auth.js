@@ -28,4 +28,14 @@ module.exports = {
       }
     };
   },
+  check_admin: function(req, res, next) {
+    if (req.user && constants.ADMIN_PERMISSION.includes(req.user.role)) {
+      next();
+    } else {
+      res.status(403).send({
+        success: false,
+        message: 'Forbidden: Chỉ có admin mới thực hiện được thao tác này '
+      });
+    }
+  }
 };

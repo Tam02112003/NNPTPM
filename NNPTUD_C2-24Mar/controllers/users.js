@@ -3,27 +3,29 @@ let roleSchema = require('../models/roles');
 let bcrypt = require('bcrypt')
 let jwt = require('jsonwebtoken')
 let constants = require('../Utils/constants')
-
+let { validators, validator_middleware } = require('../Utils/validator');
 
 module.exports = {
     getUserById: async function(id){
         return await userSchema.findById(id).populate("role");
     },
-    createUser:async function(username,password,email,role){
-        let roleCheck = await roleSchema.findOne({roleName:role});
-        if(roleCheck){
+    createUser: async function(avatarUrl,fullName,username, password, email, role) {
+        let roleCheck = await roleSchema.findOne({ roleName: role });
+        if (roleCheck) {
+            let hashedPassword = bcrypt.hashSync(password, 10); // Mã hóa mật khẩu
             let newUser = new userSchema({
+                avatarUrl: avatarUrl,
+                fullName: fullName,
                 username: username,
-                password: password,
+                password: hashedPassword, // Lưu mật khẩu đã mã hóa
                 email: email,
                 role: roleCheck._id,
             });
-            await newUser.save();    
-            return newUser;  
-        }else{    
+            await newUser.save();
+            return newUser;
+        } else {
             throw new Error("role khong ton tai");
         }
-
     },
     checkLogin: async function(username,password){
         if(username&&password){

@@ -2,11 +2,13 @@ var express = require('express');
 var router = express.Router();
 let userController = require('../controllers/users');
 const { check_authentication, check_admin } = require('../Utils/check_auth');
-
+const { validators, validator_middleware } = require('../Utils/validator');
 router.post('/signup', async function(req, res, next) {
     try {
         let body = req.body;
         let result = await userController.createUser(
+          body.fullName,
+          body.avatarUrl,
           body.username,
           body.password,
           body.email,

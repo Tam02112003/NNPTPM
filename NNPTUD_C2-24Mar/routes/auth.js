@@ -2,15 +2,18 @@ var express = require('express');
 var router = express.Router();
 let userController = require('../controllers/users');
 const { check_authentication } = require('../Utils/check_auth');
-
-router.post('/signup', async function(req, res, next) {
+const { validators, validator_middleware } = require('../Utils/validator');
+router.post('/signup',validators, validator_middleware, async function(req, res, next) {
     try {
         let body = req.body;
         let result = await userController.createUser(
+          body.avatarUrl,
+          body.fullName,
+          
           body.username,
           body.password,
           body.email,
-         'MOD'
+          'USER'
         )
         res.status(200).send({
           success:true,
@@ -21,7 +24,7 @@ router.post('/signup', async function(req, res, next) {
       }
 
 })
-router.post('/login', async function(req, res, next) {
+router.post('/login',validators, validator_middleware, async function(req, res, next) {
     try {
         let username = req.body.username;
         let password = req.body.password;

@@ -9,6 +9,10 @@ let categorySchema = mongoose.Schema({
     description:{
         type:String,
         default:""
+    },
+    slug: {
+        type:String,
+        default:""
     }
 },{
     timestamps:true

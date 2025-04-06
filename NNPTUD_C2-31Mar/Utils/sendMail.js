@@ -1,5 +1,8 @@
 const nodemailer = require("nodemailer");
 
+// kéo code và chạy chức năng tìm mk
+// cài thư viện multer
+
 const transporter = nodemailer.createTransport({
     host: "sandbox.smtp.mailtrap.io",
     port: 25,

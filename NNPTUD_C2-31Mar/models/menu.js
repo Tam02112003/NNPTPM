@@ -1,22 +1,18 @@
 let mongoose = require('mongoose');
-const { boolean } = require('webidl-conversions');
-let menuSchema = mongoose.Schema({
-    text:{
-        type:String,
-        required:true
+let menuSchema = new mongoose.Schema({
+    text: {
+        type: String,
+        required: true
     },
-    url:{
-        type:String,
-        required:true,
-        default:"/"
+    URL: {
+        type: String,
+        default: "/"
     },
-    parent:{
-        type:mongoose.Types.ObjectId,
-        ref:"menu"
+    parent: {
+        type: mongoose.Types.ObjectId,
+        ref: 'menu'
     }
+    
 
-},{
-    timestamps:true
 })
-module.exports=
-mongoose.model('menu',menuSchema)
+module.exports = mongoose.model('menu', menuSchema)
